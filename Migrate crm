@@ -1,0 +1,27 @@
+As part of the Microsoft Dynamics 2013 official training material there are a couple of slides which I thought I would share.
+
+If you ever want to change the SQL Server a deployment is using, you must change the config database and the organisation database.
+
+On the computers running Microsoft Dynamics CRM, modify the registry value:
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSCRM\configdb
+
+Old Value
+
+DataSource=SQLServer;InitialCatalog=MSCRM_CONFIG;Integrated Security=SSPI
+
+New Value
+
+DataSource=NewSQLServer;InitialCatalog=MSCRM_CONFIG;Integrated Security=SSPI
+
+To move the organization database:
+
+1.       Back up the organization database on the current SQL Server.
+2.       Restore the database to the new SQL Server Cluster.
+
+In Deployment Manager:
+
+1.       Disable the organization.
+2.       Edit the organization properties.
+3.       Change the SQL Server name to that of the new SQL Server.
+4.       Enable the organization.
